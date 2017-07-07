@@ -8,28 +8,28 @@
     
     <url>
         <loc>http://yoursite-url/tags/</loc>
-        <lastmod>2017-06-20T03:58:56.069Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://yoursite-url/about/</loc>
-        <lastmod>2017-06-20T03:58:55.784Z</lastmod>
+        <lastmod>2017-05-30T23:20:02.401Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>http://yoursite-url/archive/</loc>
-        <lastmod>2017-06-20T03:58:55.784Z</lastmod>
+        <lastmod>2017-05-30T23:20:02.304Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://yoursite-url/about/</loc>
+        <lastmod>2017-05-30T23:20:02.303Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>http://yoursite-url/404.html</loc>
-        <lastmod>2017-06-20T03:58:55.705Z</lastmod>
+        <lastmod>2017-05-30T23:20:02.269Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>

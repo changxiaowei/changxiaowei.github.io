@@ -149,14 +149,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -214,6 +214,10 @@
 
                 <h2 id="1node简单登录机制">1.node简单登录机制</h2>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="string">var</span> <span class="string">q</span> <span class="string">=</span> <span class="string">'请输入用户名：'</span><span class="string">;</span></div><div class="line">     <span class="string">var</span> <span class="string">users</span> <span class="string">=</span> <span class="string">&#123;</span></div><div class="line"><span class="attr">         'admin':</span><span class="string">'123'</span><span class="string">,</span></div><div class="line"><span class="attr">         'admin2':</span><span class="string">'456'</span></div><div class="line">     <span class="string">&#125;</span></div><div class="line">     <span class="string">process.stdout.write(q);</span></div><div class="line">     <span class="string">var</span> <span class="string">username</span> <span class="string">=</span> <span class="string">''</span><span class="string">;</span></div><div class="line">     <span class="string">process.stdin.on('data',(input)=&gt;&#123;</span></div><div class="line">         <span class="string">//process.stdout.write(`*$&#123;input&#125;*`);</span></div><div class="line">         <span class="string">//input会出现两个情况：</span></div><div class="line">         <span class="string">//1.input会出现换行</span></div><div class="line">         <span class="string">//2.typeOf</span> <span class="string">input是一个对象，实际上是流</span></div><div class="line">         <span class="string">input</span> <span class="string">=</span> <span class="string">input.toString().trim();</span></div><div class="line">         <span class="string">if(!username)&#123;</span></div><div class="line">             <span class="string">if(Object.keys(users).indexOf(input)</span> <span class="string">===</span> <span class="bullet">-1</span><span class="string">)&#123;</span></div><div class="line">                 <span class="string">process.stdout.write(q);</span></div><div class="line">                 <span class="string">username</span> <span class="string">=</span> <span class="string">''</span><span class="string">;</span></div><div class="line">             <span class="string">&#125;else&#123;</span></div><div class="line">                 <span class="string">process.stdout.write('请输入密码:');</span></div><div class="line">                 <span class="string">//这里的username是把第一次登录的用户名保存起来以便在密码的时候用</span></div><div class="line">                 <span class="string">username</span> <span class="string">=</span> <span class="string">input;</span></div><div class="line">             <span class="string">&#125;</span></div><div class="line">         <span class="string">&#125;else&#123;</span></div><div class="line">             <span class="string">if(users[username]</span> <span class="string">==</span> <span class="string">input)&#123;</span></div><div class="line">                 <span class="string">process.stdout.write('用户登录成功!');</span></div><div class="line">             <span class="string">&#125;else&#123;</span></div><div class="line">                 <span class="string">process.stdout.write('请输入正确的密码！')</span></div><div class="line">             <span class="string">&#125;</span></div><div class="line">         <span class="string">&#125;</span></div><div class="line">     <span class="string">&#125;)</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意运用<code>indexOf === -1</code>来判断是否含有这个属性<br>
+注意es6的<code>Object.keys(users)</code>来获取键值</p>
+</blockquote>
 <h2 id="2settimeoutfunction0默认把function函数放在整个js的最后">2.setTimeout(function(){},0)默认把function函数放在整个js的最后；</h2>
 <h2 id="3错误优先法则">3.错误优先法则</h2>
 <blockquote>
@@ -247,6 +251,10 @@
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/07/06/node2day/" data-toggle="tooltip" data-placement="top" title="node2day">&larr; Previous Post</a>
+                        </li>
                     
                     
                         <li class="next">
