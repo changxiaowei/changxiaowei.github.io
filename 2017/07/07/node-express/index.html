@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          config - web新世界
+          node_express - web新世界
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2017/06/20/config/">
+    <link rel="canonical" href="http://yoursite-url/2017/07/07/node-express/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -91,11 +91,11 @@
                         <div class="tags">
                             
                         </div>
-                        <h1>config</h1>
+                        <h1>node_express</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by 常校玮 on
-                            2017-06-20
+                            2017-07-07
                         </span>
                     </div>
                 
@@ -212,48 +212,31 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p><img src="github-mark.png" alt="github-mark"></p>
-<h2 id="1get-start部署hexo-到-github">1.Get Start部署hexo 到 github</h2>
+                <h2 id="初步体验express">初步体验express</h2>
+<h3 id="1强大的路由">1.强大的路由</h3>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="string">const</span> <span class="string">express</span> <span class="string">=</span> <span class="string">require('express');</span></div><div class="line"><span class="string">var</span> <span class="string">app</span> <span class="string">=</span> <span class="string">express();</span></div><div class="line"></div><div class="line"><span class="string">app.get('/',(req,res)=&gt;&#123;</span></div><div class="line">    <span class="string">res.send('你好');</span></div><div class="line"><span class="string">&#125;)</span></div><div class="line"><span class="string">app.get('/test',(req,res)=&gt;&#123;</span></div><div class="line">    <span class="string">res.send('进入test');</span></div><div class="line"><span class="string">&#125;)</span></div><div class="line"><span class="string">app.get(/^\/student\/([\d]&#123;6&#125;)$/,(req,res)=&gt;&#123;</span></div><div class="line">    <span class="string">res.send('学生的id号'+</span> <span class="string">req.params[0]);</span></div><div class="line"><span class="string">&#125;)</span></div><div class="line"><span class="string">app.get('/teacher/:gonghao',(req,res)=&gt;&#123;</span></div><div class="line">    <span class="string">res.send('老师的工号'</span> <span class="string">+</span> <span class="string">req.params.gonghao)</span></div><div class="line"><span class="string">&#125;)</span></div><div class="line"><span class="string">app.listen(80)</span></div></pre></td></tr></table></figure>
+<hr>
 <blockquote>
-<p>如何将hexo部署到github上,<a href="http://www.cnblogs.com/cherishzy/p/5694658.html" target="_blank" rel="external">参考</a></p>
+<p>路由的使用 通过正则匹配的路由 里面加括号的可以 req.params提取出来<br>
+<code>'/teacher/:gonghao'</code>加引号的特殊路由,通过req.params.gonghao</p>
 </blockquote>
-<h3 id="1创建本地仓库名字reponsity">(1).创建本地仓库名字(reponsity)!</h3>
-<blockquote>
-<p>创建一个新的repository,比如我的用户名<code>changxiaowei</code>那么我创建的项目名称叫做<br>
-<a href="http://changxiaowei.github.io" target="_blank" rel="external">changxiaowei.github.io</a><br>
-注意：创建的项目必须是<code>你的github的用户名.github.io</code>不然会报错404！</p>
-</blockquote>
-<h3 id="2配置_configyml">(2).配置_config.yml</h3>
-<blockquote>
-<p>将本地文件上传到github后，打开<code>_config.yml</code></p>
-</blockquote>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repository:</span> <span class="attr">https://github.com/changxiaowei/changxiaowei.github.io</span></div><div class="line">  <span class="string">branch：master</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：.yml文件对格式规范要求很严格，<code>type: repository: branch:</code>前面有两个空格，冒号后面都有一个空格。<br>
-最后执行</p>
-</blockquote>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">hexo</span> <span class="string">generate</span></div><div class="line"><span class="string">hexo</span> <span class="string">deploy</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：每次修改本地文件，都需要命令$ hexo generate,$ hexo deploy才能保存。而且每次使用命令都必须在Hexo根目录下使用。</p>
-</blockquote>
-<h2 id="2如何将本地静态页托管带github上">2.如何将本地静态页托管带github上</h2>
-<blockquote>
-<p>默认基础环境已经配置好</p>
-</blockquote>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="string">$</span> <span class="string">git</span> <span class="string">init</span> <span class="string">//初始化git</span></div><div class="line"><span class="string">$</span> <span class="string">git</span> <span class="string">add</span> <span class="string">.</span> <span class="string">//将所有文件添加</span> <span class="string">到git仓库里</span></div><div class="line"><span class="string">$</span> <span class="string">git</span> <span class="string">commit</span> <span class="bullet">-m'提交'</span> <span class="string">//提交一下</span></div><div class="line"><span class="string">$</span> <span class="string">git</span> <span class="string">remote</span> <span class="string">add</span> <span class="string">origin</span> <span class="attr">https://github.com/changxiaowei/demo.git</span>  <span class="string">//和git仓库建立链接</span></div><div class="line"><span class="string">$</span> <span class="string">git</span> <span class="string">push</span> <span class="bullet">-u</span> <span class="string">origin</span> <span class="string">master</span>  <span class="string">//创建主要的仓库</span></div><div class="line"><span class="string">$</span> <span class="string">git</span> <span class="string">branch</span> <span class="string">gh-pages</span> <span class="string">//创建分支并且名字必须是`gh-pages`</span></div><div class="line"><span class="string">$</span> <span class="string">git</span> <span class="string">checkout</span> <span class="string">gh-pages</span> <span class="string">//转到这个分支上</span></div><div class="line"><span class="string">$</span> <span class="string">git</span> <span class="string">push</span> <span class="bullet">-u</span> <span class="string">origin</span> <span class="string">gh-pages</span>  <span class="string">//此时提交到`gh-pages`</span></div><div class="line">   <span class="string">这样就可以在</span></div><div class="line"><span class="string">`changxiaowei.github.io/demo`这个连接打开你托管的静态页！</span></div></pre></td></tr></table></figure>
+<hr>
+<h3 id="2http静态网站目录">2.http静态网站目录</h3>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">app.use(express.static('./static'));</span></div></pre></td></tr></table></figure>
+<hr>
+<h2 id="创建根目录">创建根目录</h2>
+<h3 id="3模板绑定">3.模板绑定</h3>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="string">const</span> <span class="string">express</span> <span class="string">=</span> <span class="string">require</span> <span class="string">('express');</span></div><div class="line"></div><div class="line"><span class="string">var</span> <span class="string">app</span> <span class="string">=</span> <span class="string">express();</span></div><div class="line"></div><div class="line"><span class="string">app.set('view</span> <span class="string">engine','ejs');</span></div><div class="line"></div><div class="line"><span class="string">app.get('/',(req,res)=&gt;&#123;</span></div><div class="line">    <span class="string">res.render('test',&#123;</span></div><div class="line"><span class="attr">        'news':</span><span class="string">["我是小新闻啊","我也是啊","哈哈哈哈"]</span></div><div class="line">    <span class="string">&#125;)</span></div><div class="line"><span class="string">&#125;)</span></div><div class="line"><span class="string">app.listen(80);</span></div></pre></td></tr></table></figure>
+
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2017/06/20/angular/" data-toggle="tooltip" data-placement="top" title="angular">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/03/18/hexo-theme-beantech/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme BeanTech">Next Post &rarr;</a>
+                            <a href="/2017/07/06/node2day/" data-toggle="tooltip" data-placement="top" title="node2day">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -283,7 +266,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1get-start部署hexo-到-github"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1.Get Start部署hexo 到 github</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1创建本地仓库名字reponsity"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">(1).创建本地仓库名字(reponsity)!</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2配置_configyml"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">(2).配置_config.yml</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2如何将本地静态页托管带github上"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2.如何将本地静态页托管带github上</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#初步体验express"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">初步体验express</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1强大的路由"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.强大的路由</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2http静态网站目录"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2.http静态网站目录</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#创建根目录"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">创建根目录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3模板绑定"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">3.模板绑定</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -336,8 +319,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite-url/2017/06/20/config/";
-    var disqus_url = "http://yoursite-url/2017/06/20/config/";
+    var disqus_identifier = "http://yoursite-url/2017/07/07/node-express/";
+    var disqus_url = "http://yoursite-url/2017/07/07/node-express/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
