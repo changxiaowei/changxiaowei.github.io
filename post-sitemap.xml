@@ -39,16 +39,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite-url/2017/05/31/new-day/</loc>
-        <lastmod>2017-05-31T01:21:42.038Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://yoursite-url/2017/03/18/hexo-theme-beantech/</loc>
-        <lastmod>2017-05-30T23:20:02.271Z</lastmod>
+        <lastmod>2017-06-20T03:58:55.708Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
