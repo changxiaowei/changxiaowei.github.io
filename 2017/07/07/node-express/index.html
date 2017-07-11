@@ -69,7 +69,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('null')
+            background-image: url('delicate-arch-night-stars-landscape.jpg')
             /*post*/
         
     }
@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -227,12 +227,23 @@
 <h2 id="创建根目录">创建根目录</h2>
 <h3 id="3模板绑定">3.模板绑定</h3>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="string">const</span> <span class="string">express</span> <span class="string">=</span> <span class="string">require</span> <span class="string">('express');</span></div><div class="line"></div><div class="line"><span class="string">var</span> <span class="string">app</span> <span class="string">=</span> <span class="string">express();</span></div><div class="line"></div><div class="line"><span class="string">app.set('view</span> <span class="string">engine','ejs');</span></div><div class="line"></div><div class="line"><span class="string">app.get('/',(req,res)=&gt;&#123;</span></div><div class="line">    <span class="string">res.render('test',&#123;</span></div><div class="line"><span class="attr">        'news':</span><span class="string">["我是小新闻啊","我也是啊","哈哈哈哈"]</span></div><div class="line">    <span class="string">&#125;)</span></div><div class="line"><span class="string">&#125;)</span></div><div class="line"><span class="string">app.listen(80);</span></div></pre></td></tr></table></figure>
+<h2 id="express-例子分析">express 例子分析</h2>
+<h3 id="1路由不区分大小写">1.路由不区分大小写</h3>
+<h3 id="2具体路由往上写抽象路由向下写">2.具体路由往上写，抽象路由向下写</h3>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="string">const</span> <span class="string">http</span> <span class="string">=</span> <span class="string">require('http');</span></div><div class="line"></div><div class="line"><span class="string">const</span> <span class="string">express</span> <span class="string">=</span> <span class="string">require('express');</span></div><div class="line"></div><div class="line"><span class="string">var</span> <span class="string">app</span> <span class="string">=</span> <span class="string">express();</span></div><div class="line"></div><div class="line"><span class="string">app.get('/admin/login',(req,res)=&gt;&#123;</span></div><div class="line">    <span class="string">res.send('管理员登陆');</span></div><div class="line"></div><div class="line"><span class="string">&#125;)</span></div><div class="line"></div><div class="line"><span class="string">app.get('/:username/:id',(req,res,next)=&gt;&#123;</span></div><div class="line">    <span class="string">var</span> <span class="string">username</span> <span class="string">=req.params.username;</span></div><div class="line">    <span class="string">res.send('用户信息'+username);</span></div><div class="line">   </div><div class="line"><span class="string">&#125;)</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="string">app.listen(80);</span></div></pre></td></tr></table></figure>
+<h3 id="3express不写路径的时候相当于-全部网页">3.express不写路径的时候相当于 ‘/’全部网页；</h3>
+<h3 id="4可以通过外联函数引入-appuse函数这里不能throw-err用next可以让下面的继续匹配">4.可以通过外联函数引入 app.use（函数）；这里不能throw err,用next()可以让下面的继续匹配;</h3>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="string">const</span> <span class="string">express</span> <span class="string">=</span> <span class="string">require('express');</span></div><div class="line"> <span class="string">const</span> <span class="string">fs</span> <span class="string">=</span> <span class="string">require('fs');</span></div><div class="line"><span class="string">var</span> <span class="string">app</span> <span class="string">=</span> <span class="string">express();</span></div><div class="line"></div><div class="line"><span class="string">app.use(test);</span></div><div class="line"></div><div class="line"><span class="string">app.get('/admin',(req,res)=&gt;&#123;</span></div><div class="line">    <span class="string">res.send('登陆成功！');</span></div><div class="line"><span class="string">&#125;)</span></div><div class="line"><span class="string">function</span> <span class="string">test(req,res,next)&#123;</span></div><div class="line">  <span class="string">var</span> <span class="string">filepath</span> <span class="string">=</span> <span class="string">req.originalUrl;</span></div><div class="line">  <span class="string">fs.readFile('./static/'+filepath,(err,data)=&gt;&#123;</span></div><div class="line">      <span class="string">if(err)</span> <span class="string">&#123;</span></div><div class="line">          <span class="string">next();</span></div><div class="line">          <span class="string">return;</span></div><div class="line">        <span class="string">&#125;;</span></div><div class="line">      </div><div class="line">      <span class="string">res.send(data.toString());</span></div><div class="line">  <span class="string">&#125;)</span></div><div class="line"><span class="string">&#125;</span></div><div class="line"><span class="string">app.listen(80);</span></div></pre></td></tr></table></figure>
 
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/07/11/mongodb/" data-toggle="tooltip" data-placement="top" title="mongodb">&larr; Previous Post</a>
+                        </li>
                     
                     
                         <li class="next">
@@ -266,7 +277,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#初步体验express"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">初步体验express</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1强大的路由"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.强大的路由</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2http静态网站目录"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2.http静态网站目录</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#创建根目录"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">创建根目录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3模板绑定"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">3.模板绑定</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#初步体验express"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">初步体验express</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1强大的路由"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.强大的路由</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2http静态网站目录"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2.http静态网站目录</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#创建根目录"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">创建根目录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3模板绑定"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">3.模板绑定</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#express-例子分析"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">express 例子分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1路由不区分大小写"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">1.路由不区分大小写</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2具体路由往上写抽象路由向下写"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">2.具体路由往上写，抽象路由向下写</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3express不写路径的时候相当于-全部网页"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">3.express不写路径的时候相当于 ‘/’全部网页；</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4可以通过外联函数引入-appuse函数这里不能throw-err用next可以让下面的继续匹配"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">4.可以通过外联函数引入 app.use（函数）；这里不能throw err,用next()可以让下面的继续匹配;</span></a></li></ol></li></ol>
         
         </div>
       </aside>

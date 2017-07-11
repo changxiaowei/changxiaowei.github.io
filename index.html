@@ -69,7 +69,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/header_img/home-bg-2-dark.png') 
+            background-image: url('/img/header_img/wechang.jpg') 
             /*config*/
         
     }
@@ -136,13 +136,6 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -151,6 +144,13 @@
                         
                         <li>
                             <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -213,6 +213,39 @@
 
 <div class="post-preview">
 
+    <a href="/2017/07/11/mongodb/">
+        <h2 class="post-title">
+            mongodb
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1.nodejs 文档类型的数据库mongodb，初入
+
+安装好mongo后，开机启动
+cmd =&gt; mongod启动后
+开启数据据的cmd保存，另开cmd =&gt;mongo进入服务
+想要导入json的话，在开启mongo之前 ，使用mongoimport --db test --collection restaurants --drop --file ~/downloads/pr......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 常校玮 on
+            2017-07-11
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Blog" title="Blog">Blog</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2017/07/07/node-express/">
         <h2 class="post-title">
             node_express
@@ -251,12 +284,12 @@
         <div class="post-content-preview">
             1.node 三原则
 
-
 1.单线程;2.非阻塞I/O;3.事件驱动;
 
-
 node创建本地http服务器
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465const http = require('......
+如果一个函数内部是异步的！那么这个函数也会成为异步的！这样就的靠回掉函数！
+监听端口可以换成本地的ip,这样别人可以通过id访问你
+1234567891011121314151617181920212223242526272829303132333435363738394041424344......
         </div>
     </a>
     
@@ -444,6 +477,8 @@ I publish the whole ......
             
         
             
+            <a href="/tags/#Blog" title="Blog" rel="2">Blog</a>
+            
         
     </div>
 </section>
@@ -497,6 +532,10 @@ I publish the whole ......
     <ul>
       
         <li>
+          <a href="/2017/07/11/mongodb/">mongodb</a>
+        </li>
+      
+        <li>
           <a href="/2017/07/07/node-express/">node_express</a>
         </li>
       
@@ -510,10 +549,6 @@ I publish the whole ......
       
         <li>
           <a href="/2017/06/20/angular/">angular</a>
-        </li>
-      
-        <li>
-          <a href="/2017/06/20/config/">config</a>
         </li>
       
     </ul>
