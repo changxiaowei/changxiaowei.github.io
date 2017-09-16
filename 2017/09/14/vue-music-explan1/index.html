@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          inputPhoto - web新世界
+          vue-music-explan1 - web新世界
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2017/07/21/inputPhoto/">
+    <link rel="canonical" href="http://yoursite-url/2017/09/14/vue-music-explan1/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,7 +69,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('Free.jpg')
+            background-image: url('null')
             /*post*/
         
     }
@@ -90,16 +90,12 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#input" title="input">input</a>
-                            
-                              <a class="tag" href="/tags/#photo" title="photo">photo</a>
-                            
                         </div>
-                        <h1>inputPhoto</h1>
+                        <h1>vue-music-explan1</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by 常校玮 on
-                            2017-07-21
+                            2017-09-14
                         </span>
                     </div>
                 
@@ -216,15 +212,15 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <blockquote>
-<p>平常生活中，我们在注册什么账号，本地上传图片为什么会马上显示在页面上;<br>
-对于那些不懂html的人可能不会关注,但是对于我们这种前段的人要尤其重要;<br>
-首先明确使用的是input方式提交,整体思路是将获取的图片通过js读取数据,在暴露给dom元素</p>
+                <h1 id="使用vue-cli脚手架构建-vue-music项目">使用vue-cli脚手架构建 vue-music项目</h1>
+<h2 id="积累">积累</h2>
+<blockquote>
+<ol>
+<li>给 一个class 加一个类名之前先判断是否有该类<br>
+var arr = el.className.split(’ ‘) 转化为数组<br>
+arr.push(className) 然后 arr.join(’ ')</li>
+</ol>
 </blockquote>
-<h2 id="html">html</h2>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">&lt;input</span> <span class="string">id="file_upload"</span> <span class="string">type="file"</span> <span class="string">/&gt;</span></div><div class="line"><span class="string">&lt;div</span> <span class="string">class="image_container"&gt;</span></div><div class="line"><span class="string">&lt;img</span> <span class="string">id="preview"</span> <span class="string">width="60"</span> <span class="string">height="60"&gt;</span></div><div class="line"><span class="string">&lt;/div&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="js在使用jquery前提">js(在使用jquery前提)</h2>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="string">$(function()&#123;</span></div><div class="line"><span class="string">$("#file_upload").change(function()&#123;</span></div><div class="line"><span class="string">var</span> <span class="string">$file</span> <span class="string">=</span> <span class="string">$(this);</span></div><div class="line"><span class="string">var</span> <span class="string">fileObj</span> <span class="string">=</span> <span class="string">$file[0];</span></div><div class="line"><span class="string">var</span> <span class="string">windowURL</span> <span class="string">=</span> <span class="string">window.URL</span> <span class="string">||</span> <span class="string">window.webkitURL;</span></div><div class="line"><span class="string">var</span> <span class="string">dataURl</span> <span class="string">;</span></div><div class="line"><span class="string">var</span> <span class="string">$img</span> <span class="string">=</span> <span class="string">$('#preview');</span></div><div class="line"><span class="string">if(fileObj</span> <span class="string">&amp;&amp;</span> <span class="string">fileObj.files</span> <span class="string">&amp;&amp;</span> <span class="string">fileObj.files[0])&#123;</span></div><div class="line"><span class="string">dataURL</span> <span class="string">=</span> <span class="string">windowURL.createObjectURL(fileObj.files[0]);</span></div><div class="line"><span class="string">$img.attr('src',dataURL);</span></div><div class="line"><span class="string">&#125;else&#123;</span></div><div class="line"><span class="string">dataURL</span> <span class="string">=</span> <span class="string">$file.val();</span></div><div class="line"><span class="string">var</span> <span class="string">imgObj</span> <span class="string">=</span> <span class="string">document.getElementById("preview");</span></div><div class="line"><span class="string">imgObj.style.filter</span> <span class="string">=</span> <span class="string">"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)"</span><span class="string">;</span></div><div class="line"><span class="string">imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src</span> <span class="string">=</span> <span class="string">dataURL;</span></div><div class="line"><span class="string">&#125;</span></div><div class="line"><span class="string">&#125;)</span></div><div class="line"></div><div class="line"><span class="string">&#125;)</span></div></pre></td></tr></table></figure>
 
                 
 
@@ -232,13 +228,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2017/08/21/webpack/" data-toggle="tooltip" data-placement="top" title="webpack">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/07/14/err/" data-toggle="tooltip" data-placement="top" title="err">Next Post &rarr;</a>
+                            <a href="/2017/08/21/webpack/" data-toggle="tooltip" data-placement="top" title="webpack">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -268,7 +260,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#html"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">html</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#js在使用jquery前提"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">js(在使用jquery前提)</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#使用vue-cli脚手架构建-vue-music项目"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">使用vue-cli脚手架构建 vue-music项目</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#积累"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">积累</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -288,10 +280,6 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#input" title="input">input</a>
-                        
-                          <a class="tag" href="/tags/#photo" title="photo">photo</a>
-                        
                     </div>
                 </section>
                 
@@ -325,8 +313,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite-url/2017/07/21/inputPhoto/";
-    var disqus_url = "http://yoursite-url/2017/07/21/inputPhoto/";
+    var disqus_identifier = "http://yoursite-url/2017/09/14/vue-music-explan1/";
+    var disqus_url = "http://yoursite-url/2017/09/14/vue-music-explan1/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite-url/2017/09/14/vue-music-explan1/</loc>
+        <lastmod>2017-09-14T09:44:08.794Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite-url/2017/08/21/webpack/</loc>
         <lastmod>2017-08-21T06:17:01.880Z</lastmod>
         <changefreq>weekly</changefreq>
