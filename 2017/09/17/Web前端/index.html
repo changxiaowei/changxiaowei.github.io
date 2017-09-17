@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          webpack - web新世界
+          Web每日一看 - web新世界
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2017/08/21/webpack/">
+    <link rel="canonical" href="http://yoursite-url/2017/09/17/Web前端/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -90,14 +90,12 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#webpack" title="webpack">webpack</a>
-                            
                         </div>
-                        <h1>webpack</h1>
+                        <h1>Web每日一看</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by 常校玮 on
-                            2017-08-21
+                            2017-09-17
                         </span>
                     </div>
                 
@@ -214,24 +212,65 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>#1.webpack使用</p>
+                <h1 id="1前端安全问题">1.前端安全问题</h1>
+<h2 id="xsscross-site-scripting-跨站脚本攻击">xss(cross site scripting) /跨站脚本攻击</h2>
+<h3 id="外部javascript-代码注入到用户界面中">外部javascript 代码注入到用户界面中</h3>
 <blockquote>
-<p><code>npm install webpack --save-dev</code>先下载文件，在根目录创建 webpack.config.js</p>
+<p>预防措施：<br>
+1.过滤转义输入输出<br>
+2.避免使用 eval、new Function等执行字符串的方法，除非确定和用户输入无关<br>
+3.使用cookie 的 httpOnly属性， js是无法读写的<br>
+4.使用innerHTML、document.write 方法的时候 ，对用户输入的字符串 进行转义</p>
 </blockquote>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="string">const</span> <span class="string">path</span> <span class="string">=</span> <span class="string">require('path');</span> <span class="string">//引用原生node组件</span></div><div class="line"><span class="string">const</span> <span class="string">htmlWebpackPlugin</span> <span class="string">=</span> <span class="string">require('html-webpack-plugin');</span> <span class="string">//引入创建html的插件</span></div><div class="line"><span class="string">const</span> <span class="string">ExtractTextPlugin</span> <span class="string">=</span> <span class="string">require('extract-text-webpack-plugin');</span> <span class="string">//引入导出</span> <span class="string">css</span> <span class="string">less文件</span></div><div class="line"><span class="string">const</span> <span class="string">extractCSS</span> <span class="string">=</span> <span class="string">new</span> <span class="string">ExtractTextPlugin('css/[name]-c.css');</span> <span class="string">//</span></div><div class="line"><span class="string">const</span> <span class="string">extractLess</span> <span class="string">=</span> <span class="string">new</span> <span class="string">ExtractTextPlugin('css/[name]-l.css');</span></div><div class="line"><span class="string">const</span> <span class="string">webpackDevServer</span> <span class="string">=</span> <span class="string">require('webpack-dev-server');</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="string">module.exports</span> <span class="string">=</span> <span class="string">&#123;</span></div><div class="line">   </div><div class="line"><span class="attr">   entry:</span><span class="string">&#123;</span> <span class="string">//入口</span></div><div class="line">       <span class="string">main</span> <span class="string">:</span> <span class="string">'./app.js'</span><span class="string">,</span> <span class="string">//入口文件</span></div><div class="line">       <span class="string">hello</span> <span class="string">:</span> <span class="string">'./src/js/hello.js'</span></div><div class="line">   <span class="string">&#125;,</span></div><div class="line"><span class="attr">   output:</span><span class="string">&#123;</span> <span class="string">//导出</span></div><div class="line"><span class="attr">       path:</span><span class="string">path.resolve(__dirname,'./dist'),</span></div><div class="line"><span class="attr">       filename:</span><span class="string">'js/[name].js'</span><span class="string">,</span></div><div class="line"><span class="attr">       publicPath:</span> <span class="string">'http://localhost:9000'</span></div><div class="line">   <span class="string">&#125;,</span></div><div class="line"><span class="attr">   devServer:</span> <span class="string">&#123;</span> <span class="string">//模拟express建立的小型http服务器</span></div><div class="line">       </div><div class="line"><span class="attr">       compress:</span> <span class="literal">true</span><span class="string">,</span></div><div class="line"><span class="attr">       port:</span> <span class="number">9000</span><span class="string">,</span></div><div class="line"><span class="attr">       inline:</span> <span class="literal">true</span><span class="string">,</span></div><div class="line"><span class="attr">       hot:</span> <span class="literal">true</span></div><div class="line">   <span class="string">&#125;</span></div><div class="line">   <span class="string">,</span></div><div class="line"><span class="attr">   plugins:</span><span class="string">[</span> <span class="string">//配置生成html</span> <span class="string">的插件</span></div><div class="line">       <span class="string">new</span> <span class="string">htmlWebpackPlugin(&#123;</span></div><div class="line"><span class="attr">           template:</span><span class="string">'./src/index.html'</span><span class="string">,</span></div><div class="line"><span class="attr">           filename:</span><span class="string">'index.html'</span><span class="string">,</span></div><div class="line"><span class="attr">           arr:</span><span class="string">['吃饭','睡觉','打豆豆'],</span></div><div class="line"><span class="attr">           excludeChunks:</span><span class="string">['hello']</span></div><div class="line">       <span class="string">&#125;),</span></div><div class="line">       <span class="string">extractCSS,</span></div><div class="line">       <span class="string">extractLess</span></div><div class="line">      </div><div class="line">   <span class="string">]</span></div><div class="line">   <span class="string">,</span></div><div class="line"><span class="attr">   module:</span><span class="string">&#123;</span></div><div class="line"><span class="attr">       rules:</span><span class="string">[</span> <span class="string">//处理各种加速器</span></div><div class="line">           </div><div class="line">           <span class="string">&#123;test:/\.css$/,use:extractCSS.extract(['css-loader','postcss-loader'])&#125;,</span></div><div class="line">           <span class="string">&#123;test:/\.less$/i,use:extractLess.extract(['css-loader','less-loader'])&#125;,</span></div><div class="line">           <span class="string">&#123;test:</span> <span class="string">/\.html$/,use:</span> <span class="string">['html-loader']&#125;,</span></div><div class="line">           <span class="string">&#123;test:/\.js$/,exclude:/(node_modules|bower_components)/,use:[&#123;loader:'babel-loader',options:&#123;presets:['env']&#125;&#125;]&#125;,</span></div><div class="line">           <span class="string">&#123;</span></div><div class="line"><span class="attr">            test:</span> <span class="string">/\.(png|jpe?g|gif|svg)(\?.*)?$/,</span></div><div class="line"><span class="attr">            loader:</span> <span class="string">'url-loader'</span><span class="string">,</span></div><div class="line"><span class="attr">            options:</span> <span class="string">&#123;</span></div><div class="line"><span class="attr">                limit:</span> <span class="number">1000</span><span class="string">,</span></div><div class="line"><span class="attr">                name:</span> <span class="string">'/imgs/[name].[ext]'</span></div><div class="line">            <span class="string">&#125;</span></div><div class="line">           <span class="string">&#125;</span></div><div class="line">           </div><div class="line">       <span class="string">]</span></div><div class="line">   <span class="string">&#125;</span></div><div class="line"> </div><div class="line"></div><div class="line"><span class="string">&#125;</span></div></pre></td></tr></table></figure>
+<h2 id="csrfcross-site-request-forgery-跨站请求伪造">CSRF(cross-site request forgery) / 跨站请求伪造</h2>
+<h3 id="当你进入黑客网站进行的一些操作会被转移到别的网站上">当你进入黑客网站，进行的一些操作会被转移到别的网站上</h3>
+<blockquote>
+<p>预防措施：<br>
+1.检测网站的 http.referer 是否同域名<br>
+2.避免 session 的登陆状态长时间存储在客户端<br>
+3.对关键性操作采用验证码 或 taken机制</p>
+</blockquote>
+<h1 id="2创建对象的三种方法">2.创建对象的三种方法</h1>
+<blockquote>
+<p>(1).字面量</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var o1 = &#123;name: <span class="string">'o1'</span>&#125;</div><div class="line">var o2 = new Object(&#123;name: <span class="string">'o2'</span>&#125;)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>(2).通过构造函数</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var M = <span class="keyword">function</span> (name)  &#123;</div><div class="line">  this.name = name</div><div class="line">&#125;</div><div class="line">var o3 = new M(<span class="string">'o3'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>(3).通过Object.create方法</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var p = &#123;name:<span class="string">'p'</span>&#125;</div><div class="line">var o4 = Object.create(p)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>新创建的 o4指向原型 p</p>
+</blockquote>
+<h1 id="3js实现继承的几种方式">3.js实现继承的几种方式</h1>
+<blockquote>
+<p>(1).借用构造函数实现继承</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">parent1</span></span> () &#123; this.name = <span class="string">'parent'</span>&#125;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">child1</span></span> () &#123;</div><div class="line">  parent1.call(this)</div><div class="line">  this.type = <span class="string">'child1'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>缺点：child1 无法继承 parent1 的原型对象，没有真正实现继承<br>
+(2).借用原型链的继承</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">parent2</span></span>()&#123;this.name = <span class="string">'parent2'</span>&#125;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">parent2</span></span>()&#123;this.type = <span class="string">'child2'</span>&#125;</div><div class="line">child2.prototype = new parent2()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>缺点： 原型链共享<br>
+(3).组合继承</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">parent3</span></span>() &#123;this.name = <span class="string">'parent3'</span>; this.play = [1,2,3]&#125;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">child3</span></span>() &#123;parent3.call(this); this.type=<span class="string">'child3'</span>&#125;</div><div class="line">child3.prototype = Object.create(parent3.prototype)</div><div class="line">child3.prototype.consructor = child3</div></pre></td></tr></table></figure>
+
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2017/09/14/vue-music-explan1/" data-toggle="tooltip" data-placement="top" title="vue-music-explan1">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/07/21/inputPhoto/" data-toggle="tooltip" data-placement="top" title="inputPhoto">Next Post &rarr;</a>
+                            <a href="/2017/09/14/vue-music-explan1/" data-toggle="tooltip" data-placement="top" title="vue-music-explan1">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -261,7 +300,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1前端安全问题"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1.前端安全问题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#xsscross-site-scripting-跨站脚本攻击"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">xss(cross site scripting) /跨站脚本攻击</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#外部javascript-代码注入到用户界面中"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">外部javascript 代码注入到用户界面中</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#csrfcross-site-request-forgery-跨站请求伪造"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">CSRF(cross-site request forgery) / 跨站请求伪造</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#当你进入黑客网站进行的一些操作会被转移到别的网站上"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">当你进入黑客网站，进行的一些操作会被转移到别的网站上</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2创建对象的三种方法"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2.创建对象的三种方法</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#3js实现继承的几种方式"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3.js实现继承的几种方式</span></a></li></ol>
         
         </div>
       </aside>
@@ -281,8 +320,6 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#webpack" title="webpack">webpack</a>
-                        
                     </div>
                 </section>
                 
@@ -316,8 +353,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite-url/2017/08/21/webpack/";
-    var disqus_url = "http://yoursite-url/2017/08/21/webpack/";
+    var disqus_identifier = "http://yoursite-url/2017/09/17/Web前端/";
+    var disqus_url = "http://yoursite-url/2017/09/17/Web前端/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
