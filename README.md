@@ -3,4 +3,4 @@
 链接：https://juejin.cn/post/7331361547011801115
 2.keep-alive 处理缓存https://www.cnblogs.com/shanfeng1000/p/16692266.html
 
-AI-ui生产 https://stitch.withgoogle.com/
+AI-ui生成 https://stitch.withgoogle.com/
